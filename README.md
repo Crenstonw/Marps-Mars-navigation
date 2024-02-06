@@ -1,7 +1,7 @@
 # Marps-Mars-navigation
 The api we are using: https://api.nasa.gov/
 
-The api key: 571a2db5-1e35-4215-851c-306f10cfce9d
+The api key: bGoSRAIf9LDH1fFOuHFcx7OXOqKGnqCFrPgA2wlK
 
 <h1>Mars Rover Photos</h1>
 This API is designed to collect image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars and make it more easily available to other developers, educators, and citizen scientists. This API is maintained by Chris Cerami.
