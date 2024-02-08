@@ -75,14 +75,22 @@ class _CuriosityPageState extends State<CuriosityPage> {
         return Card(
             child: Padding(
                 padding: EdgeInsets.all(12.0),
-                child: Row(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
+                    Text(photoList[index].rover!.name!,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20)),
                     Image.network(
                       photoList[index].imgSrc!,
-                      width: 200.0,
+                      width: 300.0,
                     ),
-                    Text(photoList[index].earthDate!),
+                    ListTile(
+                      contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
+                      title: Text(photoList[index].earthDate!),
+                    ),
+                    //ElevatedButton(onPressed: onPressed, child: )
+                    //photoList[index].camera!.fullName!
                   ],
                 )));
       },
