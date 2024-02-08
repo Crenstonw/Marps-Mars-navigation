@@ -2,13 +2,13 @@ import 'dart:convert';
 
 import 'photo.dart';
 
-class MarsPhotosCuriosity {
+class MarsPhotosCuriosityResponse {
   List<Photo>? photos;
 
-  MarsPhotosCuriosity({this.photos});
+  MarsPhotosCuriosityResponse({this.photos});
 
-  factory MarsPhotosCuriosity.fromMap(Map<String, dynamic> data) {
-    return MarsPhotosCuriosity(
+  factory MarsPhotosCuriosityResponse.fromMap(Map<String, dynamic> data) {
+    return MarsPhotosCuriosityResponse(
       photos: (data['photos'] as List<dynamic>?)
           ?.map((e) => Photo.fromMap(e as Map<String, dynamic>))
           .toList(),
@@ -21,14 +21,14 @@ class MarsPhotosCuriosity {
 
   /// `dart:convert`
   ///
-  /// Parses the string and returns the resulting Json object as [MarsPhotosCuriosity].
-  factory MarsPhotosCuriosity.fromJson(String data) {
-    return MarsPhotosCuriosity.fromMap(
+  /// Parses the string and returns the resulting Json object as [MarsPhotosCuriosityResponse].
+  factory MarsPhotosCuriosityResponse.fromJson(String data) {
+    return MarsPhotosCuriosityResponse.fromMap(
         json.decode(data) as Map<String, dynamic>);
   }
 
   /// `dart:convert`
   ///
-  /// Converts [MarsPhotosCuriosity] to a JSON string.
+  /// Converts [MarsPhotosCuriosityResponse] to a JSON string.
   String toJson() => json.encode(toMap());
 }
