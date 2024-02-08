@@ -12,6 +12,9 @@ The api we are using: https://api.nasa.gov/
   <li>earth=YYY-MM-DD (you can use the earth date as well)</li>
 </ul>
 
+<p>You can also search by mission manifests of an individual rover using this endpoint: https://api.nasa.gov/mars-photos/api/v1/manifests/opportunity?api_key=DEMO_APIKEY</p>
+<p>Note: you can't use the keys above to filter manifests</p>
+
 <h1>Mars Rover Photos</h1>
 This API is designed to collect image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars and make it more easily available to other developers, educators, and citizen scientists. This API is maintained by Chris Cerami.
 
