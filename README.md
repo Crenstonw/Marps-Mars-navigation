@@ -1,6 +1,17 @@
 # Marps-Mars-navigation
 The api we are using: https://api.nasa.gov/
 
+<p>To obtain info about the rovers has been used you can use this endpoint: https://api.nasa.gov/mars-photos/api/v1/rovers?api_key=DEMO_APIKEY</p>
+<p>To obtain info about a rover, his cams, how many photos he did and the time has been used you can use this endpoint: https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity?api_key=DEMO_APIKEY</p>
+<p>To obtain info about photos a rover did, you can use this endpoint: https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?api_key=DEMO_APIKEY</p>
+<p>Another keys you can use to filter the photos are the following:</p>
+<ul>
+  <li>sol=100 (marsian date)</li>
+  <li>cam=fhaz (the cam type)</li>
+  <li>page=2 (filter by page)</li>
+  <li>earth=YYY-MM-DD (you can use the earth date as well)</li>
+</ul>
+
 <h1>Mars Rover Photos</h1>
 This API is designed to collect image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars and make it more easily available to other developers, educators, and citizen scientists. This API is maintained by Chris Cerami.
 
