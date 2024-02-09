@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marps_frontend/page/opportunity_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,7 +12,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[];
+  static const List<Widget> _widgetOptions = <Widget>[OpportunityPage()];
 
   void _onItemTapped(int index) {
     setState(() {
