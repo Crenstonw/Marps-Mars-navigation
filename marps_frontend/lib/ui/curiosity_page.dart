@@ -70,32 +70,41 @@ class _CuriosityPageState extends State<CuriosityPage> {
   }
 
   Widget _CuriosityListView(BuildContext context, List<Photo> photoList) {
-    return ListView.builder(
-      itemBuilder: (BuildContext context, int index) {
-        return Card(
-            child: Padding(
-                padding: EdgeInsets.all(12.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(photoList[index].rover!.name!,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20)),
-                    Image.network(
-                      photoList[index].imgSrc!,
-                      width: 300.0,
-                    ),
-                    ListTile(
-                      contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
-                      title: Text(photoList[index].earthDate!),
-                    ),
-                    //ElevatedButton(onPressed: onPressed, child: )
-                    //photoList[index].camera!.fullName!
-                  ],
-                )));
-      },
-      padding: const EdgeInsets.only(left: 16.0, right: 16.0),
-      itemCount: photoList.length,
-    );
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Rover Curiosity Photos'),
+        ),
+        body: Column(
+          children: [
+            ElevatedButton(onPressed: onPressed, child: ),
+            ListView.builder(
+              itemBuilder: (BuildContext context, int index) {
+                return Card(
+                    child: Padding(
+                        padding: EdgeInsets.all(12.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(photoList[index].rover!.name!,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20)),
+                            Image.network(
+                              photoList[index].imgSrc!,
+                              width: 300.0,
+                            ),
+                            ListTile(
+                              contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
+                              title: Text(photoList[index].earthDate!),
+                            ),
+                            //ElevatedButton(onPressed: onPressed, child: )
+                            //photoList[index].camera!.fullName!
+                          ],
+                        )));
+              },
+              padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+              itemCount: photoList.length,
+            ),
+          ],
+        ));
   }
 }
