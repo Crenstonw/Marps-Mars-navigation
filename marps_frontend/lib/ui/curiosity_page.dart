@@ -4,6 +4,7 @@ import 'package:marps_frontend/blocs/bloc/curiosity_bloc.dart';
 import 'package:marps_frontend/models/curiosity/mars_photos_curiosity_response/mars_photos_curiosity_response.dart';
 import 'package:marps_frontend/repositories/curiosity_repository.dart';
 import 'package:marps_frontend/repositories/curiosity_repository_impl.dart';
+import 'package:marps_frontend/ui/curiosity_camera_detail_page.dart';
 
 class CuriosityPage extends StatefulWidget {
   const CuriosityPage({super.key});
@@ -70,41 +71,48 @@ class _CuriosityPageState extends State<CuriosityPage> {
   }
 
   Widget _CuriosityListView(BuildContext context, List<Photo> photoList) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Rover Curiosity Photos'),
-        ),
-        body: Column(
-          children: [
-            ElevatedButton(onPressed: onPressed, child: ),
-            ListView.builder(
-              itemBuilder: (BuildContext context, int index) {
-                return Card(
-                    child: Padding(
-                        padding: EdgeInsets.all(12.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(photoList[index].rover!.name!,
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 20)),
-                            Image.network(
-                              photoList[index].imgSrc!,
-                              width: 300.0,
-                            ),
-                            ListTile(
-                              contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
-                              title: Text(photoList[index].earthDate!),
-                            ),
-                            //ElevatedButton(onPressed: onPressed, child: )
-                            //photoList[index].camera!.fullName!
-                          ],
-                        )));
-              },
-              padding: const EdgeInsets.only(left: 16.0, right: 16.0),
-              itemCount: photoList.length,
-            ),
-          ],
-        ));
+    return ListView.builder(
+      itemBuilder: (BuildContext context, int index) {
+        return Card(
+            child: Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(photoList[index].rover!.name!,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20)),
+                    Image.network(
+                      photoList[index].imgSrc!,
+                      width: 300.0,
+                    ),
+                    ListTile(
+                      contentPadding: const EdgeInsets.fromLTRB(15, 10, 25, 0),
+                      title: Text(photoList[index].earthDate!),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CuriosityCameraDetailPage(
+                                  cameraName: photoList[index].camera!.name!)),
+                        );
+                      },
+                      child: const Text(
+                        "View Camera Detail",
+                        style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          color: Color.fromARGB(255, 0, 101, 183),
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                  ],
+                )));
+      },
+      padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+      itemCount: photoList.length,
+    );
   }
 }
