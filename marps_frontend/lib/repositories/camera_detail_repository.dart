@@ -1,5 +1,5 @@
-import 'package:marps_frontend/models/curiosity/camera_detail_response/photo.dart';
+import 'package:marps_frontend/models/curiosity/mars_photos_curiosity_response/mars_photos_curiosity_response.dart';
 
 abstract class CameraDetailRepository {
-  Future<List<Photo>> fetchPhotos();
+  Future<List<Photo>> fetchDetails();
 }

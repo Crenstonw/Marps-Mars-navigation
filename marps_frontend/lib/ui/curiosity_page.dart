@@ -86,24 +86,42 @@ class _CuriosityPageState extends State<CuriosityPage> {
                       photoList[index].imgSrc!,
                       width: 300.0,
                     ),
-                    ListTile(
-                      contentPadding: const EdgeInsets.fromLTRB(15, 10, 25, 0),
-                      title: Text(photoList[index].earthDate!),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.public,
+                          color: Color.fromARGB(255, 12, 12, 12),
+                        ),
+                        const SizedBox(width: 5),
+                        Text(
+                          photoList[index].earthDate!,
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
                     ),
                     TextButton(
                       onPressed: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => CuriosityCameraDetailPage(
-                                  cameraName: photoList[index].camera!.name!)),
+                            builder: (context) => CuriosityCameraDetailPage(
+                              cameraName: photoList[index].camera!.name!,
+                            ),
+                          ),
                         );
                       },
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                          Color.fromARGB(255, 0, 101, 183),
+                        ),
+                      ),
                       child: const Text(
                         "View Camera Detail",
                         style: TextStyle(
                           fontWeight: FontWeight.normal,
-                          color: Color.fromARGB(255, 0, 101, 183),
+                          color: Colors.white,
                           fontSize: 16,
                         ),
                       ),
