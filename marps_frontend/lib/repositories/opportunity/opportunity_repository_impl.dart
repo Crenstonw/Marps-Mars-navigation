@@ -1,25 +1,19 @@
 import 'dart:convert';
-
-import 'package:flutter_bloc_movies/models/movie_popular_response/movie_popular_response.dart';
-import 'package:flutter_bloc_movies/repositories/movies/movie_repository.dart';
 import 'package:http/http.dart';
+import 'package:marps_frontend/models/opportunity_photos/opportunity_photos.dart';
+import 'package:marps_frontend/repositories/opportunity/opportunity_repository.dart';
 
-class MovieRepositoryImpl extends MovieRepository {
+class OpportunityRepositoryImpl extends OpportunityRepository {
   final Client _httpClient = Client();
 
   @override
-  Future<Movie> fetchMovieDetail(int movieId) {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<List<Movie>> fetchMovies(String type) async {
+  Future<List<Photo>> fetchOpportunityPhotos(int sol) async {
     final response = await _httpClient.get(Uri.parse(
-        'https://api.themoviedb.org/3/movie/$type?api_key=433d2c486572afb242c6fe7c1ddc6771'));
+        'https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?$sol&api_key=bGoSRAIf9LDH1fFOuHFcx7OXOqKGnqCFrPgA2wlK'));
     if (response.statusCode == 200) {
-      return MoviePopularResponse.fromJson(json.decode(response.body)).results!;
+      return OpportunityPhotos.fromJson(json.decode(response.body)).photos!;
     } else {
-      throw Exception('Failed to load movies');
+      throw Exception('Failed to load photos');
     }
   }
 }

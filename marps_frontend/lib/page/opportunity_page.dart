@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:marps_frontend/blocs/opportunity_bloc/opportunity_bloc_bloc.dart';
+import 'package:marps_frontend/repositories/opportunity/opportunity_repository.dart';
+import 'package:marps_frontend/repositories/opportunity/opportunity_repository_impl.dart';
 
 class OpportunityPage extends StatefulWidget {
   const OpportunityPage({super.key});
@@ -9,22 +12,22 @@ class OpportunityPage extends StatefulWidget {
 }
 
 class _OpportunityPageState extends State<OpportunityPage> {
-  late MovieRepository movieRepository;
+  late OpportunityRepository opportunityRepository;
 
   @override
   void initState() {
     super.initState();
-    movieRepository = MovieRepositoryImpl();
+    opportunityRepository = OpportunityRepositoryImpl();
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) =>
-            MoviesBloc(movieRepository)..add(MovieFetchList('popular')),
+        create: (context) => OpportunityBloc(opportunityRepository)
+          ..add(OpportunityFetchList(100)),
         child: Scaffold(
           appBar: AppBar(
-            title: const Text('Movies'),
+            title: const Text('Opportunity\'s photos'),
             actions: [
               IconButton(
                   onPressed: () {
@@ -33,23 +36,23 @@ class _OpportunityPageState extends State<OpportunityPage> {
                   icon: const Icon(Icons.filter_list))
             ],
           ),
-          body: _movieList(),
+          body: _OpportunityPhotosList(),
         ));
   }
 
-  Widget _movieList() {
-    return BlocBuilder<MoviesBloc, MoviesState>(
+  Widget _OpportunityPhotosList() {
+    return BlocBuilder<OpportunityBloc, OpportunityBlocState>(
       builder: (context, state) {
-        if (state is MovieFetchSuccess) {
+        if (state is OpportunityFetchSuccess) {
           return ListView.builder(
-            itemCount: state.movieList.length,
+            itemCount: state.photoList.length,
             itemBuilder: (context, index) {
               return ListTile(
-                title: Text(state.movieList[index].originalTitle!),
+                title: Text(state.photoList[index].camera!.fullName!),
               );
             },
           );
-        } else if (state is MovieFetchError) {
+        } else if (state is OpportunityFetchError) {
           return Text(state.errorMessage);
         } else {
           return const CircularProgressIndicator();
@@ -70,24 +73,24 @@ class _OpportunityPageState extends State<OpportunityPage> {
                 ListTile(
                   title: const Text('Popular'),
                   onTap: () {
-                    BlocProvider.of<MoviesBloc>(context)
-                        .add(MovieFetchList('popular'));
+                    BlocProvider.of<OpportunityBloc>(context)
+                        .add(OpportunityFetchList(100));
                     Navigator.pop(context);
                   },
                 ),
                 ListTile(
                   title: const Text('Top rated'),
                   onTap: () {
-                    BlocProvider.of<MoviesBloc>(context)
-                        .add(MovieFetchList('top_rated'));
+                    BlocProvider.of<OpportunityBloc>(context)
+                        .add(OpportunityFetchList(100));
                     Navigator.pop(context);
                   },
                 ),
                 ListTile(
                   title: const Text('Latest'),
                   onTap: () {
-                    BlocProvider.of<MoviesBloc>(context)
-                        .add(MovieFetchList('latest'));
+                    BlocProvider.of<OpportunityBloc>(context)
+                        .add(OpportunityFetchList(100));
                     Navigator.pop(context);
                   },
                 ),

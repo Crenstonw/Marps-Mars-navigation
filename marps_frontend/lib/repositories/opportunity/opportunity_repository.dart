@@ -1,6 +1,5 @@
-import 'package:flutter_bloc_movies/models/movie_popular_response/movie_popular_response.dart';
+import 'package:marps_frontend/models/opportunity_photos/opportunity_photos.dart';
 
-abstract class MovieRepository {
-  Future<List<Movie>> fetchMovies(String type);
-  Future<Movie> fetchMovieDetail(int movieId);
+abstract class OpportunityRepository {
+  Future<List<Photo>> fetchOpportunityPhotos(int sol);
 }
