@@ -47,8 +47,17 @@ class _OpportunityPageState extends State<OpportunityPage> {
           return ListView.builder(
             itemCount: state.photoList.length,
             itemBuilder: (context, index) {
-              return ListTile(
-                title: Text(state.photoList[index].camera!.fullName!),
+              return Card(
+                child: Column(
+                  children: [
+                    Text(state.photoList[index].camera!.fullName!,
+                        style: TextStyle(fontSize: 24)),
+                    Image.network(
+                      state.photoList[index].imgSrc!,
+                      width: 400,
+                    )
+                  ],
+                ),
               );
             },
           );

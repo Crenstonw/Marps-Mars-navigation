@@ -18,7 +18,7 @@ class OpportunityBloc extends Bloc<OpportunityBlocEvent, OpportunityBlocState> {
       OpportunityFetchList event, Emitter<OpportunityBlocState> emit) async {
     try {
       final photoList =
-          await OpportunityRepository.fetchOpportunityPhotos(event.sol);
+          await opportunityRepository.fetchOpportunityPhotos(event.sol);
       emit(OpportunityFetchSuccess(photoList));
       return;
     } on Exception catch (e) {
