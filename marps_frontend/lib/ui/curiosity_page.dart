@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:marps_frontend/blocs/bloc/curiosity_bloc.dart';
+import 'package:marps_frontend/blocs/curiosity_bloc/curiosity_bloc.dart';
 import 'package:marps_frontend/models/curiosity/mars_photos_curiosity_response/mars_photos_curiosity_response.dart';
 import 'package:marps_frontend/repositories/curiosity_repository.dart';
 import 'package:marps_frontend/repositories/curiosity_repository_impl.dart';
@@ -91,12 +91,11 @@ class _CuriosityPageState extends State<CuriosityPage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         const Icon(
-                          Icons.public,
+                          Icons.numbers,
                           color: Color.fromARGB(255, 12, 12, 12),
                         ),
-                        const SizedBox(width: 5),
                         Text(
-                          photoList[index].earthDate!,
+                          photoList[index].id!.toString(),
                           textAlign: TextAlign.center,
                         ),
                       ],
@@ -114,12 +113,12 @@ class _CuriosityPageState extends State<CuriosityPage> {
                       },
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(
-                          Color.fromARGB(255, 0, 101, 183),
+                          const Color.fromARGB(255, 0, 101, 183),
                         ),
                       ),
-                      child: const Text(
-                        "View Camera Detail",
-                        style: TextStyle(
+                      child: Text(
+                        "Camera ${photoList[index].camera!.name!}",
+                        style: const TextStyle(
                           fontWeight: FontWeight.normal,
                           color: Colors.white,
                           fontSize: 16,

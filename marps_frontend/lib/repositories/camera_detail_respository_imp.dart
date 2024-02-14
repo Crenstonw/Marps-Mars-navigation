@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart';
 import 'package:marps_frontend/models/curiosity/mars_photos_curiosity_response/mars_photos_curiosity_response.dart';
 import 'package:marps_frontend/repositories/camera_detail_repository.dart';
-/*
+
 class CameraDetailRepositoryImpl extends CameraDetailRepository {
   final Client _client = Client();
 
@@ -19,4 +19,4 @@ class CameraDetailRepositoryImpl extends CameraDetailRepository {
       throw Exception('Fail to load photos');
     }
   }
-}*/
+}

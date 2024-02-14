@@ -1,6 +1,6 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marps_frontend/models/curiosity/mars_photos_curiosity_response/mars_photos_curiosity_response.dart';
-import 'package:meta/meta.dart';
 import 'package:marps_frontend/repositories/camera_detail_repository.dart';
 
 part 'curiosity_detail_event.dart';
@@ -17,7 +17,7 @@ class CuriosityDetailBloc
   void _onCuriosityDetailFetch(
       CuriosityDetailEvent event, Emitter<CuriosityDetailState> emit) async {
     try {
-      final photoList = await cameraDetailRepository.fetchDetails();
+      final photoList = await cameraDetailRepository.fetchDetails(event.name);
       emit(DetailFetched(photoList));
       return;
     } on Exception catch (e) {
