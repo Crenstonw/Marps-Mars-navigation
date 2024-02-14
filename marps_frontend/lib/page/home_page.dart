@@ -12,11 +12,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    OpportunityPage(),
-    OpportunityPage(),
-    OpportunityPage()
-  ];
+  static const List<Widget> _widgetOptions = <Widget>[OpportunityPage()];
 
   void _onItemTapped(int index) {
     setState(() {

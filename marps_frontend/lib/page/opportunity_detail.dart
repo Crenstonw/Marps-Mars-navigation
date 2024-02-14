@@ -4,14 +4,14 @@ import 'package:marps_frontend/blocs/opportunity_bloc/opportunity_bloc_bloc.dart
 import 'package:marps_frontend/repositories/opportunity/opportunity_repository.dart';
 import 'package:marps_frontend/repositories/opportunity/opportunity_repository_impl.dart';
 
-class OpportunityPage extends StatefulWidget {
-  const OpportunityPage({super.key});
+class OpportunityDetail extends StatefulWidget {
+  const OpportunityDetail({super.key});
 
   @override
-  State<OpportunityPage> createState() => _OpportunityPageState();
+  State<OpportunityDetail> createState() => _OpportunityDetailState();
 }
 
-class _OpportunityPageState extends State<OpportunityPage> {
+class _OpportunityDetailState extends State<OpportunityDetail> {
   late OpportunityRepository opportunityRepository;
 
   @override
