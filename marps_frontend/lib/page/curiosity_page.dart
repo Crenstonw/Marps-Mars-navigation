@@ -5,6 +5,7 @@ import 'package:marps_frontend/models/curiosity/mars_photos_curiosity_response/m
 import 'package:marps_frontend/repositories/curiosity_repository.dart';
 import 'package:marps_frontend/repositories/curiosity_repository_impl.dart';
 import 'package:marps_frontend/page/curiosity_camera_detail_page.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class CuriosityPage extends StatefulWidget {
   const CuriosityPage({super.key});
@@ -75,31 +76,58 @@ class _CuriosityPageState extends State<CuriosityPage> {
       itemBuilder: (BuildContext context, int index) {
         return Card(
             child: Padding(
-                padding: EdgeInsets.all(12.0),
+                padding: EdgeInsets.only(bottom: 15),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(photoList[index].rover!.name!,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20)),
-                    Image.network(
-                      photoList[index].imgSrc!,
-                      width: 300.0,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.numbers,
-                          color: Color.fromARGB(255, 12, 12, 12),
+                    ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(10),
                         ),
-                        Text(
-                          photoList[index].id!.toString(),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
+                        child: Stack(
+                          children: [
+                            FadeInImage.memoryNetwork(
+                              placeholder: kTransparentImage,
+                              image: photoList[index].imgSrc!,
+                              fit: BoxFit.cover,
+                            ),
+                            Positioned(
+                              top: 10,
+                              left: 18,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(photoList[index].rover!.name!,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 25,
+                                          color: Color.fromARGB(
+                                              255, 255, 255, 255))),
+                                ],
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 10,
+                              right: 18,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Icon(
+                                    Icons.numbers,
+                                    color: Color.fromARGB(255, 255, 255, 255),
+                                  ),
+                                  Text(photoList[index].id!.toString(),
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(
+                                          color: Color.fromARGB(
+                                              255, 255, 255, 255))),
+                                ],
+                              ),
+                            ),
+                          ],
+                        )),
+                    const SizedBox(height: 20),
                     TextButton(
                       onPressed: () {
                         Navigator.push(
@@ -113,15 +141,15 @@ class _CuriosityPageState extends State<CuriosityPage> {
                       },
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(
-                          const Color.fromARGB(255, 0, 101, 183),
+                          const Color.fromARGB(255, 46, 47, 57),
                         ),
                       ),
                       child: Text(
                         "Camera ${photoList[index].camera!.name!}",
                         style: const TextStyle(
                           fontWeight: FontWeight.normal,
-                          color: Colors.white,
-                          fontSize: 16,
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          fontSize: 18,
                         ),
                       ),
                     ),

@@ -4,6 +4,7 @@ import 'package:marps_frontend/models/curiosity/mars_photos_curiosity_response/m
 import 'package:marps_frontend/repositories/camera_detail_repository.dart';
 import 'package:marps_frontend/repositories/camera_detail_respository_imp.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class CuriosityCameraDetailPage extends StatefulWidget {
   const CuriosityCameraDetailPage({super.key, required this.cameraName});
@@ -76,38 +77,66 @@ class _CuriosityCameraDetailPageState extends State<CuriosityCameraDetailPage> {
       itemBuilder: (BuildContext context, int index) {
         return Card(
             child: Padding(
-                padding: EdgeInsets.all(12.0),
+                padding: EdgeInsets.only(bottom: 15),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(photoList[index].camera!.name!,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 20)),
-                        const SizedBox(width: 210),
-                        if (photoList[index].rover!.status! == "active")
-                          const Icon(
-                            Icons.circle,
-                            color: Color.fromARGB(255, 15, 136, 37),
-                          )
-                        else
-                          const Icon(
-                            Icons.circle,
-                            color: Color.fromARGB(255, 136, 15, 15),
-                          )
-                      ],
-                    ),
-                    Text(photoList[index].camera!.fullName!,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.normal,
-                            fontSize: 14,
-                            color: Color.fromARGB(255, 107, 107, 107))),
-                    Image.network(
-                      photoList[index].imgSrc!,
-                      width: 300.0,
-                    ),
+                    ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(10),
+                        ),
+                        child: Stack(
+                          children: [
+                            FadeInImage.memoryNetwork(
+                              placeholder: kTransparentImage,
+                              image: photoList[index].imgSrc!,
+                              fit: BoxFit.cover,
+                            ),
+                            Positioned(
+                              top: 10,
+                              left: 18,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(photoList[index].camera!.name!,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 28,
+                                          color: Color.fromARGB(
+                                              255, 254, 254, 254))),
+                                  const SizedBox(width: 185),
+                                  if (photoList[index].rover!.status! ==
+                                      "active")
+                                    const Icon(
+                                      Icons.circle,
+                                      color: Color.fromARGB(255, 15, 136, 37),
+                                    )
+                                  else
+                                    const Icon(
+                                      Icons.circle,
+                                      color: Color.fromARGB(255, 136, 15, 15),
+                                    )
+                                ],
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 10,
+                              right: 18,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(photoList[index].camera!.fullName!,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.normal,
+                                          fontSize: 14,
+                                          color: Color.fromARGB(
+                                              255, 255, 255, 255))),
+                                ],
+                              ),
+                            ),
+                          ],
+                        )),
                     const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
