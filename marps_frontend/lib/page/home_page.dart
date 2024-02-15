@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marps_frontend/page/curiosity_page.dart';
+import 'package:marps_frontend/page/opportunity_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

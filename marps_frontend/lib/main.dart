@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marps_frontend/page/home_page.dart';
+import 'package:marps_frontend/page/opportunity_page.dart';
 
 void main() {
   runApp(const MainApp());
@@ -16,7 +17,7 @@ class MainApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: OpportunityPage(),
     );
   }
 }
