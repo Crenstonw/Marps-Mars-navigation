@@ -11,8 +11,20 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[];
-
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Curiosity',
+      style: optionStyle,
+    ),
+    Text(
+      'Opportunity',
+      style: optionStyle,
+    ),
+    Text(
+      'Spirit',
+      style: optionStyle,
+    ),
+  ];
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -28,7 +40,7 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_box),
+            icon: Icon(Icons.rocket),
             label: 'Curiosity',
           ),
           BottomNavigationBarItem(
