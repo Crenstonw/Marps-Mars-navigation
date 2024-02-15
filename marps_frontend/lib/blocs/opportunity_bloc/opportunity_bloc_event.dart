@@ -4,6 +4,6 @@ part of 'opportunity_bloc_bloc.dart';
 sealed class OpportunityBlocEvent {}
 
 class OpportunityFetchList extends OpportunityBlocEvent {
-  final int sol;
-  OpportunityFetchList(this.sol);
+  final String camera;
+  OpportunityFetchList(this.camera);
 }

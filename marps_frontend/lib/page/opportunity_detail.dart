@@ -5,7 +5,8 @@ import 'package:marps_frontend/repositories/opportunity/opportunity_repository.d
 import 'package:marps_frontend/repositories/opportunity/opportunity_repository_impl.dart';
 
 class OpportunityDetail extends StatefulWidget {
-  const OpportunityDetail({super.key});
+  final String camera;
+  const OpportunityDetail({super.key, required this.camera});
 
   @override
   State<OpportunityDetail> createState() => _OpportunityDetailState();
@@ -24,7 +25,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
   Widget build(BuildContext context) {
     return BlocProvider(
         create: (context) => OpportunityBloc(opportunityRepository)
-          ..add(OpportunityFetchList(100)),
+          ..add(OpportunityFetchList(widget.camera)),
         child: Scaffold(
           appBar: AppBar(
             title: const Text('Opportunity\'s photos'),
@@ -83,7 +84,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   title: const Text('Popular'),
                   onTap: () {
                     BlocProvider.of<OpportunityBloc>(context)
-                        .add(OpportunityFetchList(100));
+                        .add(OpportunityFetchList(widget.camera));
                     Navigator.pop(context);
                   },
                 ),
@@ -91,7 +92,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   title: const Text('Top rated'),
                   onTap: () {
                     BlocProvider.of<OpportunityBloc>(context)
-                        .add(OpportunityFetchList(100));
+                        .add(OpportunityFetchList(widget.camera));
                     Navigator.pop(context);
                   },
                 ),
@@ -99,7 +100,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   title: const Text('Latest'),
                   onTap: () {
                     BlocProvider.of<OpportunityBloc>(context)
-                        .add(OpportunityFetchList(100));
+                        .add(OpportunityFetchList(widget.camera));
                     Navigator.pop(context);
                   },
                 ),

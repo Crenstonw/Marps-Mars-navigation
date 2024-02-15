@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marps_frontend/blocs/opportunity_bloc/opportunity_bloc_bloc.dart';
-import 'package:marps_frontend/repositories/opportunity/opportunity_repository.dart';
-import 'package:marps_frontend/repositories/opportunity/opportunity_repository_impl.dart';
+import 'package:marps_frontend/blocs/opportunity_detail_bloc/opportunity_detail_bloc_bloc.dart';
+import 'package:marps_frontend/page/opportunity_detail.dart';
+import 'package:marps_frontend/repositories/opportunity/opportunity_detail_repository.dart';
+import 'package:marps_frontend/repositories/opportunity/opportunity_detail_repository_impl.dart';
 
 class OpportunityPage extends StatefulWidget {
   const OpportunityPage({super.key});
@@ -12,22 +14,21 @@ class OpportunityPage extends StatefulWidget {
 }
 
 class _OpportunityPageState extends State<OpportunityPage> {
-  late OpportunityRepository opportunityRepository;
+  late OpportunityDetailRepository opportunityRepository;
 
   @override
   void initState() {
     super.initState();
-    opportunityRepository = OpportunityRepositoryImpl();
+    opportunityRepository = OpportunityDetailRepositoryImpl();
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => OpportunityBloc(opportunityRepository)
-          ..add(OpportunityFetchList(100)),
+        create: (context) => OpportunityDetailBlocBloc(opportunityRepository),
         child: Scaffold(
           appBar: AppBar(
-            title: const Text('Opportunity\'s photos'),
+            title: const Text('Opportunity\'s Cameras'),
             actions: [
               IconButton(
                   onPressed: () {
@@ -36,32 +37,40 @@ class _OpportunityPageState extends State<OpportunityPage> {
                   icon: const Icon(Icons.filter_list))
             ],
           ),
-          body: _opportunityPhotosList(),
+          body: _opportunityCamerasList(),
         ));
   }
 
-  Widget _opportunityPhotosList() {
-    return BlocBuilder<OpportunityBloc, OpportunityBlocState>(
+  Widget _opportunityCamerasList() {
+    return BlocBuilder<OpportunityDetailBlocBloc, OpportunityDetailBlocState>(
       builder: (context, state) {
-        if (state is OpportunityFetchSuccess) {
+        if (state is OpportunityDetailFetchSuccess) {
           return ListView.builder(
-            itemCount: state.photoList.length,
+            itemCount: state.cameraList.length,
             itemBuilder: (context, index) {
               return Card(
                 child: Column(
                   children: [
-                    Text(state.photoList[index].camera!.fullName!,
+                    Text(state.cameraList[index].fullName!,
                         style: const TextStyle(fontSize: 24)),
-                    Image.network(
-                      state.photoList[index].imgSrc!,
-                      width: 400,
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                OpportunityDetail(camera: state.cameraList[index].name!.toString())
+                          ),
+                        );
+                      },
+                      child: const Text('Retry'),
                     )
                   ],
                 ),
               );
             },
           );
-        } else if (state is OpportunityFetchError) {
+        } else if (state is OpportunityDetailFetchError) {
           return Text(state.errorMessage);
         } else {
           return const CircularProgressIndicator();
@@ -82,24 +91,21 @@ class _OpportunityPageState extends State<OpportunityPage> {
                 ListTile(
                   title: const Text('Popular'),
                   onTap: () {
-                    BlocProvider.of<OpportunityBloc>(context)
-                        .add(OpportunityFetchList(100));
+                    BlocProvider.of<OpportunityBloc>(context);
                     Navigator.pop(context);
                   },
                 ),
                 ListTile(
                   title: const Text('Top rated'),
                   onTap: () {
-                    BlocProvider.of<OpportunityBloc>(context)
-                        .add(OpportunityFetchList(100));
+                    BlocProvider.of<OpportunityBloc>(context);
                     Navigator.pop(context);
                   },
                 ),
                 ListTile(
                   title: const Text('Latest'),
                   onTap: () {
-                    BlocProvider.of<OpportunityBloc>(context)
-                        .add(OpportunityFetchList(100));
+                    BlocProvider.of<OpportunityBloc>(context);
                     Navigator.pop(context);
                   },
                 ),

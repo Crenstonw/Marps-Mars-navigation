@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marps_frontend/page/curiosity_page.dart';
-import 'package:marps_frontend/page/opportunity_page.dart';
+import 'package:marps_frontend/page/opportunity_detail.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,14 +15,7 @@ class _HomePageState extends State<HomePage> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     CuriosityPage(),
-    Text(
-      'Opportunity',
-      style: optionStyle,
-    ),
-    Text(
-      'Spirit',
-      style: optionStyle,
-    ),
+    OpportunityDetail(camera: 'navcam')
   ];
   void _onItemTapped(int index) {
     setState(() {
@@ -45,11 +38,7 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.account_box),
             label: 'Opportunity',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_box),
-            label: 'Spirit',
-          ),
+          )
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[800],
