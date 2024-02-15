@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marps_frontend/page/home_page.dart';
 import 'package:marps_frontend/page/opportunity_page.dart';
 
 void main() {
