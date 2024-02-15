@@ -8,24 +8,13 @@ class OpportunityRepositoryImpl extends OpportunityRepository {
   final Client _httpClient = Client();
 
   @override
-  Future<List<Photo>> fetchOpportunityPhotos(int sol) async {
+  Future<List<Photo>> fetchOpportunityPhotos(String camera) async {
     final response = await _httpClient.get(Uri.parse(
-        'https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?sol=$sol&api_key=bGoSRAIf9LDH1fFOuHFcx7OXOqKGnqCFrPgA2wlK'));
+        'https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?sol=100&camera=$camera&api_key=bGoSRAIf9LDH1fFOuHFcx7OXOqKGnqCFrPgA2wlK'));
     if (response.statusCode == 200) {
       return OpportunityPhotos.fromJson(response.body).photos!;
     } else {
       throw Exception('Failed to load photos');
-    }
-  }
-
-  @override
-  Future<List<Camera>> fetchOpportunityCameras() async {
-    final response = await _httpClient.get(Uri.parse(
-        'https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity&api_key=bGoSRAIf9LDH1fFOuHFcx7OXOqKGnqCFrPgA2wlK'));
-    if (response.statusCode == 200) {
-      return Rover.fromJson(response.body).cameras!;
-    } else {
-      throw Exception('Failed to load the cameras');
     }
   }
 }
