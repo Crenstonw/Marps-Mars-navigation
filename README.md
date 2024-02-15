@@ -12,6 +12,9 @@ The api we are using: https://api.nasa.gov/
   <li>earth=YYY-MM-DD (you can use the earth date as well)</li>
 </ul>
 
+<p>You can also search by mission manifests of an individual rover using this endpoint: https://api.nasa.gov/mars-photos/api/v1/manifests/opportunity?api_key=DEMO_APIKEY</p>
+<p>Note: you can't use the keys above to filter manifests</p>
+
 <h1>Mars Rover Photos</h1>
 This API is designed to collect image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars and make it more easily available to other developers, educators, and citizen scientists. This API is maintained by Chris Cerami.
 
@@ -22,26 +25,78 @@ Along with querying by date, results can also be filtered by the camera with whi
 Each camera has a unique function and perspective, and they are named as follows:
 
 <h1>Rover Cameras</h1>
-Abbreviation	Camera	Curiosity	Opportunity	Spirit
-
-FHAZ	Front Hazard Avoidance Camera	✔	✔	✔
-
-RHAZ	Rear Hazard Avoidance Camera	✔	✔	✔
-
-MAST	Mast Camera	✔		
-
-CHEMCAM	Chemistry and Camera Complex	✔		
-
-MAHLI	Mars Hand Lens Imager	✔		
-
-MARDI	Mars Descent Imager	✔		
-
-NAVCAM	Navigation Camera	✔	✔	✔
-
-PANCAM	Panoramic Camera		✔	✔
-
-MINITES	Miniature Thermal Emission Spectrometer (Mini-TES)		✔	✔
-
+<table>
+  <tr>
+    <th>Abbreviation</th>
+    <th>Camera</th>
+    <th>Curiosity</th>
+    <th>Opportunity</th>
+    <th>Spirit</th>
+  </tr>
+  <tr>
+    <th>FHAZ</th>
+    <th>Front Hazard Avoidance Camera</th>
+    <th>✔</th>
+    <th>✔</th>
+    <th>✔</th>
+  </tr>
+  <tr>
+    <th>RHAZ</th>
+    <th>Rear Hazard Avoidance Camera</th>
+    <th>✔</th>
+    <th>✔</th>
+    <th>✔</th>
+  </tr>
+  <tr>
+    <th>MAST</th>
+    <th>Mast Camera</th>
+    <th>✔</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+    <th>CHEMCAM</th>
+    <th>Chemistry and Camera Complex</th>
+    <th>✔</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+    <th>MAHLI</th>
+    <th>Mars Hand Lens Imager</th>
+    <th>✔</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+    <th>MARDI</th>
+    <th>Mars Descent Imager</th>
+    <th>✔</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+    <th>NAVCAM</th>
+    <th>Navigation Camera</th>
+    <th>✔</th>
+    <th>✔</th>
+    <th>✔</th>
+  </tr>
+  <tr>
+    <th>PANCAM</th>
+    <th>Panoramic Camera</th>
+    <th></th>
+    <th>✔</th>
+    <th>✔</th>
+  </tr>
+  <tr>
+    <th>MINITES</th>
+    <th>Miniature Thermal Emission Spectrometer (Mini-TES)</th>
+    <th></th>
+    <th>✔</th>
+    <th>✔</th>
+  </tr>
+</table>	
 
 <h1>Querying by Martian sol</h1>
 Parameter	Type	Default	Description
