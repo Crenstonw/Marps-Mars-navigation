@@ -4,7 +4,7 @@ import 'package:marps_frontend/blocs/curiosity_bloc/curiosity_bloc.dart';
 import 'package:marps_frontend/models/curiosity/mars_photos_curiosity_response/mars_photos_curiosity_response.dart';
 import 'package:marps_frontend/repositories/curiosity_repository.dart';
 import 'package:marps_frontend/repositories/curiosity_repository_impl.dart';
-import 'package:marps_frontend/ui/curiosity_camera_detail_page.dart';
+import 'package:marps_frontend/page/curiosity_camera_detail_page.dart';
 
 class CuriosityPage extends StatefulWidget {
   const CuriosityPage({super.key});
