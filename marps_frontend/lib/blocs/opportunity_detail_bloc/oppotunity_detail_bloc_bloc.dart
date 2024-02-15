@@ -6,7 +6,7 @@ import 'package:meta/meta.dart';
 part 'oppotunity_detail_bloc_event.dart';
 part 'oppotunity_detail_bloc_state.dart';
 
-class OppotunityDetailBlocBloc extends Bloc<OppotunityDetailBlocEvent, OppotunityDetailBlocState> {
+/*class OppotunityDetailBlocBloc extends Bloc<OppotunityDetailBlocEvent, OppotunityDetailBlocState> {
   final OpportunityRepository opportunityRepository;
 
   OpportunityBloc(this.opportunityRepository)
@@ -25,4 +25,4 @@ class OppotunityDetailBlocBloc extends Bloc<OppotunityDetailBlocEvent, Oppotunit
       emit(OpportunityFetchError(e.toString()));
     }
   }
-}
+}*/
