@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marps_frontend/page/curiosity_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,10 +13,7 @@ class _HomePageState extends State<HomePage> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Curiosity',
-      style: optionStyle,
-    ),
+    CuriosityPage(),
     Text(
       'Opportunity',
       style: optionStyle,
